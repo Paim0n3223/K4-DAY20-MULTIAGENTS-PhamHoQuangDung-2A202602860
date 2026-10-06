@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-10-06T10:15:05.297607+00:00",
+  "error": null,
+  "skills": [
+    "skills/auto/rigorous-code-compliance/SKILL.md",
+    "skills/auto/structured-data-normalization/SKILL.md",
+    "skills/auto/strict-schema-and-sorting/SKILL.md"
+  ],
+  "seconds": 10.7,
+  "tokens": {
+    "input": 8502,
+    "output": 497,
+    "total": 8999
+  }
+}
