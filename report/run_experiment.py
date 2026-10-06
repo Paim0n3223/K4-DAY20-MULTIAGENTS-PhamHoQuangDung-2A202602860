@@ -67,6 +67,12 @@ def main():
                   f"seconds={record['seconds']}; error={record['error']}", flush=True)
             if not record["error"]:
                 break
+            if "GenerateRequestsPerDay" in record["error"]:
+                stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%f")
+                archive = ROOT / "results" / "api-attempts" / f"{args.condition}-{task}-{stamp}"
+                archive.parent.mkdir(parents=True, exist_ok=True)
+                shutil.move(str(directory), str(archive))
+                raise SystemExit("Daily API quota exhausted; resume after reset. Failed run archived.")
             if not any(code in record["error"] for code in ("429", "503", "UNAVAILABLE", "RESOURCE_EXHAUSTED")):
                 raise SystemExit(1)
             if attempt + 1 < args.attempts:

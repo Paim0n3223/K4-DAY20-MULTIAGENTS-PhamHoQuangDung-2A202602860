@@ -1,0 +1,87 @@
+{
+  "task": "code-eval",
+  "condition": "subagents",
+  "role": "eval",
+  "timestamp": "2026-10-06T10:37:56.971474+00:00",
+  "error": null,
+  "skills_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "seconds": 157.9,
+  "tokens": {
+    "input": 170846,
+    "output": 8735,
+    "total": 179581
+  },
+  "tool_calls": 20,
+  "subagent_calls": 0,
+  "skills_read": 0,
+  "skills_modified": false,
+  "final_message": [
+    {
+      "type": "text",
+      "text": "I have fixed the implementation across the `bookings` package to ensure all tests pass and every function strictly adheres to its docstring specification:\n\n1. **`workspace/bookings/timeutil.py` (`parse_duration`)**:\n   - Expanded duration parsing to fully support all formats described in the docstring (`\"1h30m\"`, `\"2h\"`, `\"45m\"`, `\"1:30\"`, and bare numbers like `\"45\"` for minutes), ignoring surrounding whitespace and handling case-insensitivity.\n   - Added robust validation to raise `ValueError` for invalid duration strings.\n\n2. **`workspace/bookings/billing.py` (`billable_blocks`)**:\n   - Replaced incorrect rounding with `math.ceil` to ensure partial blocks always round up.\n   - Added validation to ensure negative `minutes` values raise `ValueError` as specified in the docstring.\n\n3. **`workspace/bookings/schedule.py` (`add_slot`)**:\n   - Replaced the mutable default argument (`slots=[]`) with `slots=None` and created a new list on each call to prevent shared state between separate invocations.",
+      "extras": {
+        "signature": "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"
+      }
+    }
+  ],
+  "score": 0.6363636363636364,
+  "passed": 7,
+  "total": 11,
+  "checks": [
+    {
+      "name": "visible_suite_passes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "tests_not_modified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "parse_duration_all_formats",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "other_caller_fixed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "billable_blocks_round_up",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "add_slot_no_shared_state",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "negative_minutes_rejected",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rule_type_hints",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_regression_tests",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_changelog",
+      "passed": false,
+      "detail": ""
+    },
+    {
+      "name": "rule_version_bump",
+      "passed": false,
+      "detail": ""
+    }
+  ]
+}
